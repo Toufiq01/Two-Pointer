@@ -1,0 +1,31 @@
+//O(n) coplexity
+class Solution {
+    public int maxArea(int[] height) {
+        int maxcon = 0;
+        int i=0, j=height.length-1;
+        while(i<j){
+            int min = Math.min(height[i],height[j]);
+            maxcon = Math.max(min*(j-i),maxcon);
+            if(height[i] < height[j]) i++;
+            else j--;
+        }
+        return maxcon;
+    }
+}
+// Runtime: 4 ms, faster than 27.24% of Java online submissions for Container With Most Water.
+// Memory Usage: 48.7 MB, less than 5.58% of Java online submissions for Container With Most Water.
+//O(n^2) time complexity
+class Solution {
+    public int maxArea(int[] height) {
+        int maxcon = 0;
+        for(int i =0; i<height.length; i++){
+            for(int j=i+1; j<height.length; j++){
+                int min = Math.min(height[i],height[j]);
+                maxcon = Math.max(min*(j-i),maxcon);
+            }
+        }
+        return maxcon;
+    }
+}
+// Runtime: 839 ms, faster than 6.68% of Java online submissions for Container With Most Water.
+// Memory Usage: 49.3 MB, less than 5.58% of Java online submissions for Container With Most Water.
